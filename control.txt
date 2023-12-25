@@ -1,0 +1,10 @@
+Cliente
+empleado
+
+pedientes
+-administradores
+-Mecanicos
+-repuestos
+-vehiculo
+-Personal -dependencias de serviicos y horarios
+

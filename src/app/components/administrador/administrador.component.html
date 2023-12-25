@@ -1,0 +1,81 @@
+<div class="p-10 pl-16">
+    <button (click)="openModal()"
+        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+        Crear nuevo administrador
+    </button>
+
+    <div *ngIf="modalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
+        <div class="modal-container bg-white mx-auto p-4 sm:p-8 rounded-lg shadow-lg z-50">
+            <form (submit)="onSubmit()">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="empleado" class="block mb-2 text-sm font-medium text-gray-900">Empleado</label>
+                        <select id="empleado" [(ngModel)]="administrador.empleado_id" name="empleado_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            required>
+                            <option *ngFor="let empleado of empleados" [value]="empleado.id">{{ empleado.nombres + ' ' +
+                                empleado.apellidos }}
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="turno" class="block mb-2 text-sm font-medium text-gray-900">Turno</label>
+                        <select id="turno" [(ngModel)]="administrador.turno" name="turno"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            required>
+                            <option value="Diurno">Diurno</option>
+                            <option value="Vespertino">Vespertino</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div>
+                    <button type="submit"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Guardar</button>
+                    <button type="button" (click)="closeModal()"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Contenido de la tabla -->
+
+    <!-- Component: Simple Table -->
+    <div class="w-full overflow-x-auto pt-10">
+        <table class="w-full text-left border border-collapse rounded sm:border-separate border-slate-200"
+            cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Empleado</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Turno</th>
+
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let administrador of administradores">
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ administrador.empleado_id }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ administrador.turno }}</td>
+
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        <button (click)="cargaradministrador(administrador)"
+                            class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Editar</button>
+                        <button (click)="eliminaradministrador(administrador)"
+                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

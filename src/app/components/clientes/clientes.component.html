@@ -1,0 +1,107 @@
+<div class="p-10 pl-16">
+    <button (click)="openModal()"
+        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+        Crear nuevo cliente
+    </button>
+
+    <div *ngIf="modalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
+        <div class="modal-container bg-white mx-auto p-4 sm:p-8 rounded-lg shadow-lg z-50">
+            <form (submit)="onSubmit()">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="nombres" class="block mb-2 text-sm font-medium text-gray-900">Nombres</label>
+                        <input type="text" id="nombres" [(ngModel)]="cliente.nombres" name="nombres"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="John" required>
+                    </div>
+                    <div>
+                        <label for="apellidos" class="block mb-2 text-sm font-medium text-gray-900">Apellidos</label>
+                        <input type="text" id="apellidos" [(ngModel)]="cliente.apellidos" name="apellidos"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="Doe" required>
+                    </div>
+                    <div>
+                        <label for="cedula" class="block mb-2 text-sm font-medium text-gray-900">Cédula</label>
+                        <input type="text" id="cedula" [(ngModel)]="cliente.cedula" name="cedula"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="1234567890" required>
+                    </div>
+                    <div>
+                        <label for="correo" class="block mb-2 text-sm font-medium text-gray-900">Correo</label>
+                        <input type="email" id="correo" [(ngModel)]="cliente.correo" name="correo"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="john.doe@company.com" required>
+                    </div>
+                    <div>
+                        <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900">Telefono</label>
+                        <input type="text" id="telefono" [(ngModel)]="cliente.telefono" name="telefono"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="09823990" required>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Guardar</button>
+                    <button type="button" (click)="closeModal()"
+                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Contenido de la tabla -->
+
+    <!-- Component: Simple Table -->
+    <div class="w-full overflow-x-auto pt-10">
+        <table class="w-full text-left border border-collapse rounded sm:border-separate border-slate-200"
+            cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Nombres</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Apellidos</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Cédula</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Correo</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Teléfono</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes">
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ cliente.nombres }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ cliente.apellidos }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ cliente.cedula }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ cliente.correo }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ cliente.telefono }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        <button (click)="cargarCliente(cliente)"
+                            class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Editar</button>
+                        <button (click)="eliminarCliente(cliente)"
+                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
