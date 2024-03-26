@@ -1,19 +1,32 @@
 <div class="p-10 pl-16">
     <button (click)="openModal()"
         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-        Crear nuevo servicio
+        Crear nuevo horario
     </button>
 
     <div *ngIf="modalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div class="modal-container bg-white mx-auto p-4 sm:p-8 rounded-lg shadow-lg z-50">
             <form (submit)="onSubmit()">
-                <div class="grid gap-6 mb-6">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
-                        <label for="turno" class="block mb-2 text-sm font-medium text-gray-900">Descripcion del
-                            servicio</label>
-                        <textarea name="" id="" cols="30" rows="10"
+                        <label for="horaEntrada" class="block mb-2 text-sm font-medium text-gray-900">Hora de
+                            Entrada</label>
+                        <input type="time" id="horaEntrada" [(ngModel)]="horario.hora_entrada" name="hora_entrada"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            [(ngModel)]="servicio.descripcion" name="descripcion" id="descripcion"></textarea>
+                            required>
+                    </div>
+                    <div>
+                        <label for="horaSalida" class="block mb-2 text-sm font-medium text-gray-900">Hora de
+                            Salida</label>
+                        <input type="time" id="horaSalida" [(ngModel)]="horario.hora_salida" name="hora_salida"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            required>
+                    </div>
+                    <div>
+                        <label for="cedula" class="block mb-2 text-sm font-medium text-gray-900">Dias</label>
+                        <input type="text" id="cedula" [(ngModel)]="horario.dias" name="dias"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            placeholder="1234567890" required>
                     </div>
 
                 </div>
@@ -36,22 +49,34 @@
                 <tr>
                     <th scope="col"
                         class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
-                        Servicios</th>
+                        Hora de Entrada</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Hora de salida</th>
+                    <th scope="col"
+                        class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
+                        Dias</th>
                     <th scope="col"
                         class="h-12 px-6 text-sm font-medium border-l first:border-l-0 stroke-slate-700 text-slate-700 bg-slate-100">
                         Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let servicio of servicios">
+                <tr *ngFor="let horario of horarios">
                     <td
                         class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
-                        {{ servicio.descripcion }}</td>
+                        {{ horario.hora_entrada }}</td>
                     <td
                         class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
-                        <button (click)="cargarservicio(servicio)"
+                        {{ horario.hora_salida }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        {{ horario.dias }}</td>
+                    <td
+                        class="h-12 px-6 text-sm transition duration-300 border-t border-l first:border-l-0 border-slate-200 stroke-slate-500 text-slate-500 ">
+                        <button (click)="cargarhorario(horario)"
                             class="focus:outline-none text-white bg-yellow-500 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ">Editar</button>
-                        <button (click)="eliminarservicio(servicio)"
+                        <button (click)="eliminarhorario(horario)"
                             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Eliminar</button>
                     </td>
                 </tr>

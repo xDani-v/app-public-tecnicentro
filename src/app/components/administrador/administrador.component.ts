@@ -80,14 +80,16 @@ export class AdministradorComponent {
   }
 
   eliminaradministrador(administrador: any) {
-    this.servicio.deleteAdministrador(administrador.id).subscribe(
-      response => {
-        this.toast.show('success', 'administrador eliminado correctamente');
-        this.listaadministradores();
-      },
-      error => {
-        this.toast.show('danger', 'Error al eliminar el administrador');
-      }
-    );
+    this.toast.show('confirmation', '¿Estás seguro?', () => {
+      this.servicio.deleteAdministrador(administrador.id).subscribe(
+        response => {
+          this.toast.show('success', 'administrador eliminado correctamente');
+          this.listaadministradores();
+        },
+        error => {
+          this.toast.show('danger', 'Error al eliminar el administrador');
+        }
+      );
+    });
   }
 }

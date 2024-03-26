@@ -72,14 +72,16 @@ export class ClientesComponent implements OnInit {
   }
 
   eliminarCliente(cliente: any) {
-    this.servicio.deleteCliente(cliente.id).subscribe(
-      response => {
-        this.toast.show('success', 'Cliente eliminado correctamente');
-        this.listaClientes();
-      },
-      error => {
-        this.toast.show('danger', 'Error al eliminar el cliente');
-      }
-    );
+    this.toast.show('confirmation', '¿Estás seguro?', () => {
+      this.servicio.deleteCliente(cliente.id).subscribe(
+        response => {
+          this.toast.show('success', 'Cliente eliminado correctamente');
+          this.listaClientes();
+        },
+        error => {
+          this.toast.show('danger', 'Error al eliminar el cliente');
+        }
+      );
+    });
   }
 }

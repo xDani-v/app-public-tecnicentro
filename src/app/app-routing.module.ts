@@ -7,6 +7,11 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { MecanicoComponent } from './components/mecanico/mecanico.component';
 import { RepuestosComponent } from './components/repuestos/repuestos.component';
+import { ServiciosComponent } from './components/servicios/servicios.component';
+import { HorariosComponent } from './components/horarios/horarios.component';
+import { PersonalComponent } from './components/personal/personal.component';
+import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +23,11 @@ const routes: Routes = [
       { path: 'administradores', component: AdministradorComponent },
       { path: 'mecanicos', component: MecanicoComponent },
       { path: 'repuestos', component: RepuestosComponent },
+      { path: 'servicios', component: ServiciosComponent },
+      { path: 'horarios', component: HorariosComponent },
+      { path: 'personal', component: PersonalComponent },
+      { path: 'vehiculos', component: VehiculosComponent },
+      { path: 'facturas', component: FacturasComponent },
 
     ]
   },

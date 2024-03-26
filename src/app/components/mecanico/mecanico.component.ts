@@ -80,14 +80,16 @@ export class MecanicoComponent {
   }
 
   eliminarmecanico(mecanico: any) {
-    this.servicio.deleteMecanico(mecanico.id).subscribe(
-      response => {
-        this.toast.show('success', 'mecanico eliminado correctamente');
-        this.listamecanicos();
-      },
-      error => {
-        this.toast.show('danger', 'Error al eliminar el mecanico');
-      }
-    );
+    this.toast.show('confirmation', '¿Estás seguro?', () => {
+      this.servicio.deleteMecanico(mecanico.id).subscribe(
+        response => {
+          this.toast.show('success', 'mecanico eliminado correctamente');
+          this.listamecanicos();
+        },
+        error => {
+          this.toast.show('danger', 'Error al eliminar el mecanico');
+        }
+      );
+    });
   }
 }

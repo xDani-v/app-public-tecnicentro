@@ -93,4 +93,87 @@ export class ServiciosapiService {
   deleteMecanico(id: number): Observable<any> {
     return this.http.delete(`${this.url}mecanico/${id}`);
   }
+  //servicios de horarios
+  getHorarios(): Observable<any> {
+    return this.http.get(this.url + "horarios");
+  }
+
+  getHorario(id: number): Observable<any> {
+    return this.http.get(`${this.url}horarios/${id}`);
+  }
+
+  createHorario(horario: any): Observable<any> {
+    return this.http.post(this.url + "horarios", horario);
+  }
+
+  updateHorario(id: number, horario: any): Observable<any> {
+    return this.http.put(`${this.url}horarios/${id}`, horario);
+  }
+
+  deleteHorario(id: number): Observable<any> {
+    return this.http.delete(`${this.url}horarios/${id}`);
+  }
+  //servicios de servicios
+  getServicios(): Observable<any> {
+    return this.http.get(this.url + "servicios");
+  }
+
+  getServicio(id: number): Observable<any> {
+    return this.http.get(`${this.url}servicios/${id}`);
+  }
+
+  createServicio(servicio: any): Observable<any> {
+    return this.http.post(this.url + "servicios", servicio);
+  }
+
+  updateServicio(id: number, servicio: any): Observable<any> {
+    return this.http.put(`${this.url}servicios/${id}`, servicio);
+  }
+
+  deleteServicio(id: number): Observable<any> {
+    return this.http.delete(`${this.url}servicios/${id}`);
+  }
+  //servicios del personal
+  getPersonal(): Observable<any> {
+    return this.http.get(this.url + "personal");
+  }
+
+  getPersona(id: number): Observable<any> {
+    return this.http.get(`${this.url}personal/${id}`);
+  }
+
+  createPersona(persona: any): Observable<any> {
+    return this.http.post(this.url + "personal", persona);
+  }
+
+  updatePersona(id: number, persona: any): Observable<any> {
+    return this.http.put(`${this.url}personal/${id}`, persona);
+  }
+
+  deletePersona(id: number): Observable<any> {
+    return this.http.delete(`${this.url}personal/${id}`);
+  }
+
+  getServiciosByIdPersonal(id_personal: number): Observable<any> {
+    return this.http.get<any>(`${this.url}personal/ps/${id_personal}`);
+  }
+
+  //relaciones de servicios con personal
+  getPs_sById(id: number): Observable<any> {
+    return this.http.get(`${this.url}ps_s/${id}`);
+  }
+
+  createPs_s(ps_s: any): Observable<any> {
+    return this.http.post(this.url + "ps_s", ps_s);
+  }
+
+  updatePs_s(id: number, ps_s: any): Observable<any> {
+    return this.http.put(`${this.url}ps_s/${id}`, ps_s);
+  }
+
+  deletePs_s(id_personal: number, id_servicio: number): Observable<any> {
+    return this.http.delete(`${this.url}ps_s/${id_personal}/${id_servicio}`);
+  }
+  //vehiculos rutes
+
 }

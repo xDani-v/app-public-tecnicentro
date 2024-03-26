@@ -15,6 +15,9 @@ import { MecanicoComponent } from './components/mecanico/mecanico.component';
 import { RepuestosComponent } from './components/repuestos/repuestos.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { PersonalComponent } from './components/personal/personal.component';
+import { HorariosComponent } from './components/horarios/horarios.component';
+import { VehiculosComponent } from './components/vehiculos/vehiculos.component';
+import { FacturasComponent } from './components/facturas/facturas.component';
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { PersonalComponent } from './components/personal/personal.component';
     RepuestosComponent,
     ServiciosComponent,
     PersonalComponent,
+    HorariosComponent,
+    VehiculosComponent,
+    FacturasComponent,
 
   ],
   imports: [
